@@ -39,7 +39,7 @@ const state = {
 
 // Initial State
 function resetSimulation() {
-    state.x = -200; // Start on the left
+    state.x = -100; // Start on the left
     state.v = 0;
     state.thermalEnergy = 0;
     state.initialTotalEnergy = 0;
@@ -292,3 +292,4 @@ sliderGravity.addEventListener('input', (e) => {
 resize();
 resetSimulation();
 requestAnimationFrame(loop);
+
