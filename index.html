@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conservation of Energy Simulation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Conservation of Energy</h1>
+            <p class="subtitle">Explore the transformation between Potential and Kinetic Energy</p>
+        </header>
+
+        <main>
+            <section class="simulation-panel glass-panel">
+                <canvas id="simCanvas"></canvas>
+                <div class="overlay-instruction">Drag the ball to start!</div>
+            </section>
+
+            <aside class="controls-panel glass-panel"
+                style="flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
+                <div class="charts-container" style="flex: 1; min-width: 300px;">
+                    <h2>Energy Distribution</h2>
+                    <div class="chart-row">
+                        <div class="bar-label">Total (E)</div>
+                        <div class="bar-track">
+                            <div class="bar-fill total" id="barTotal" style="width: 100%"></div>
+                        </div>
+                        <div class="bar-value" id="valTotal">100J</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="bar-label">Potential (U)</div>
+                        <div class="bar-track">
+                            <div class="bar-fill potential" id="barPotential" style="width: 50%"></div>
+                        </div>
+                        <div class="bar-value" id="valPotential">50J</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="bar-label">Kinetic (K)</div>
+                        <div class="bar-track">
+                            <div class="bar-fill kinetic" id="barKinetic" style="width: 50%"></div>
+                        </div>
+                        <div class="bar-value" id="valKinetic">50J</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="bar-label">Thermal (Q)</div>
+                        <div class="bar-track">
+                            <div class="bar-fill thermal" id="barThermal" style="width: 0%"></div>
+                        </div>
+                        <div class="bar-value" id="valThermal">0J</div>
+                    </div>
+                </div>
+
+                <div class="controls-container" style="flex: 1; min-width: 300px;">
+                    <h2>Controls</h2>
+                    <div class="control-group">
+                        <button id="btnStartPause" class="btn primary">Pause</button>
+                        <button id="btnReset" class="btn secondary">Reset</button>
+                    </div>
+                    <div class="control-group toggle-group">
+                        <label for="toggleFriction" class="toggle-label">Friction (Dissipation)</label>
+                        <input type="checkbox" id="toggleFriction" class="toggle-input">
+                    </div>
+                    <div class="control-group slider-group" id="frictionSliderGroup" style="display: none;">
+                        <label for="sliderFriction">Friction Intensity</label>
+                        <input type="range" id="sliderFriction" min="0.001" max="0.02" value="0.005" step="0.001">
+                        <span id="valFriction">0.005</span>
+                    </div>
+                    <div class="control-group slider-group">
+                        <label for="sliderGravity">Gravity</label>
+                        <input type="range" id="sliderGravity" min="1" max="20" value="9.8" step="0.1">
+                        <span id="valGravity">9.8 m/s²</span>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <section class="info-panel glass-panel">
+            <div class="info-card">
+                <h3>Potential Energy ($U$)</h3>
+                <p>Stored energy based on position. $U = mgh$</p>
+            </div>
+            <div class="info-card">
+                <h3>Kinetic Energy ($K$)</h3>
+                <p>Energy of motion. $K = \frac{1}{2}mv^2$</p>
+            </div>
+            <div class="info-card">
+                <h3>Conservation</h3>
+                <p>Total Energy remains constant (without friction). $E = U + K$</p>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
